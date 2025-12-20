@@ -1,7 +1,7 @@
-const API_BASE_URL = "https://gdrive-api-service-production.up.railway.app";
+const API_BASE_URL = "https://gdrive-api-service-production.up.railway.app/api/v1";
 
 export async function importGoogleDriveFolder(folderUrl) {
-  const res = await fetch(`${API_BASE_URL}/api/v1/import/google-drive`, {
+  const res = await fetch(`${API_BASE_URL}/import/google-drive`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -17,10 +17,14 @@ export async function importGoogleDriveFolder(folderUrl) {
   return res.json();
 }
 
-export async function fetchImages() {
-  const res = await fetch(`${API_BASE_URL}/api/v1/images`);
+export async function fetchImages(page = 1, limit = 20) {
+  const res = await fetch(
+    `${API_BASE_URL}/images?page=${page}&limit=${limit}`
+  );
+
   if (!res.ok) {
     throw new Error("Failed to fetch images");
   }
+
   return res.json();
 }

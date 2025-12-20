@@ -1,7 +1,7 @@
 const API_BASE_URL = "https://gdrive-api-service-production.up.railway.app";
 
 export async function importGoogleDriveFolder(folderUrl) {
-  const res = await fetch(`${API_BASE_URL}/import/google-drive`, {
+  const res = await fetch(`${API_BASE_URL}/api/v1/import/google-drive`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
